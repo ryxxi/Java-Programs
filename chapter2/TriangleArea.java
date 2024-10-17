@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercise2_19 {
+public class TriangleArea {
 
 	public static void main(String... args) {
 

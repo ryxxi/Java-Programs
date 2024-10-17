@@ -1,0 +1,20 @@
+Stage 1
+
+1. Collect weight in kg and height in metres
+2. Calculate BMI
+3. Display BMI
+4. Display appropriate weight category
+
+Stage 2
+
+1. Prompt a user to enter their height(m) and weight(kg)
+2. Collect both values
+3. Store height as heightMTR
+4. Store weight as weightKG
+5. Calculate weightKG / (heightMTR * heightMTR)
+6. Store as bMI
+7. Display bMI
+8. If (bMI >= 30), display obese
+9. Else if (bMI >= 25), display overweight
+10. Else if (bMI >= 18.5), display normal weight
+11. Else, display underweight

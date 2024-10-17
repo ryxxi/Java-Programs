@@ -1,4 +1,4 @@
-public class FourthQuestion {
+public class Java101Welcome {
 
 	public static void main(String[] args) {
 

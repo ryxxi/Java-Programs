@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Review {
+public class VariableProduct {
 
 	public static void main(String[] args) {
 

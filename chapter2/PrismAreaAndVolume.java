@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercise2_2 {
+public class PrismAreaAndVolume {
 
 	public static void main(String[] args) {
 

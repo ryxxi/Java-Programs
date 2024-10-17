@@ -1,4 +1,4 @@
-public class Exercise2_31 {
+public class ListOfMultiples {
 
 	public static void main(String... args) { 
 

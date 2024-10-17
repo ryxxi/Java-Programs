@@ -1,4 +1,4 @@
-public class Exercise2_35 {
+public class PyramidOfGiza {
 
 	public static void main(String... args) {
 

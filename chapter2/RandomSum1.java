@@ -1,4 +1,4 @@
-public class FifthQuestion { 
+public class RandomSum1 { 
 
 	public static void main(String[] args) { 
 

@@ -1,0 +1,23 @@
+Stage 1
+
+1. Obtain 5 integers
+2. Determine the nature of the number (positive, negative or 0)
+3. Display how many are positive, negative, and 0
+
+Stage 2
+
+1. Recognise value 0
+2. Store as negCounter
+3. Recognise value 0
+4. Store as posCounter
+5. Recognise value 0
+6. Store as zeroCounter
+7. Recognise value 1
+8. Store as numCounter
+9. While  numCounter <= 5, prompt user to enter a number
+10. If number is less than zero, increment negCounter by 1
+11. Else if number == 0, increment zeroCounter by 1
+12. Else, increment posCounter by 1
+13. Display posCounter
+14. Display negCounter
+15. Display zeroCounter

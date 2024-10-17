@@ -1,0 +1,14 @@
+Stage 1
+
+1. Obtain distance in feet
+2. Convert to metres
+3. Display distance in metres
+
+Stage 2
+
+1. Prompt a user to enter a distance in feet
+2. Collect value
+3. Store as distanceInFeet
+4. Calculate distanceInFeet * 0.305
+5. Store as distanceInMetres
+6. Display distanceInMetres

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercise2_26 {
+public class TripleDouble {
 
 	public static void main(String... args) { 
 

@@ -1,4 +1,4 @@
-public class HTD {
+public class HappyTeacherDay {
 
 	public static void main(String[] args) {
 

@@ -1,0 +1,21 @@
+Stage 1
+
+1. Obtain a number
+2. Separate its digits
+3. Add them together
+4. Display result
+
+Stage 2
+
+1. Prompt a user to enter a 3 digit number
+2. Collect value
+3. Store as integer
+4. Calculate integer / 100
+5. Store as digit1
+6. Calculate (integer / 10) % 10
+7. Store as digit2
+8. Calculate integer % 10
+9. Store as digit3
+10. Calculate digit1 + digit2 + digit3
+11. Store as sum
+12. Display sum

@@ -1,0 +1,16 @@
+Stage 1
+
+1. Obtain a 3 digit number
+2. Determine whether the value is palindromic or not
+
+Stage 2
+
+1. Prompt the user to enter a 3 digit integer
+2. Collect the value
+3. Store as number
+4. Calculate number / 100
+5. Store as digit1
+6. Calculate number % 10
+7. Store as digit3
+8. If digit1 = digit3, display palindrome
+9. Else, display not palindrome

@@ -1,4 +1,4 @@
-public class Exercise2_6 {
+public class DigitSum {
 
 	public static void main(String... args) {
 

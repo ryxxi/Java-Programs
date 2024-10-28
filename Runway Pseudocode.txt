@@ -1,0 +1,11 @@
+Runway Pseudocode
+
+1. Prompt a user to enter the speed of the plane
+2. Collect value
+3. Store as speed
+4. Prompt a user to enter the acceleration of the plane
+5. Collect value
+6. Store as acceleration
+7. Calculate (speed * speed) / (2 * acceleration)
+8. Store as minLength
+9. Display minLength

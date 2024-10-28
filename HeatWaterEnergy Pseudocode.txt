@@ -1,0 +1,14 @@
+HeatWaterEnergy Pseudocode
+
+1. Prompt user to enter mass
+2. Collect value
+3. Store as mass
+4. Prompt user to enter initial temp of water
+5. Collect value
+6. Store as initialTemp
+7. Prompt user to enter finalTemp
+8. Collect value
+9. Store as finalTemp
+10. Calculate mass * 4184 * (finalTemp - initialTemp)
+11. Store as energy
+12. Display energy

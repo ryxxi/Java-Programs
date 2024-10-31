@@ -1,4 +1,4 @@
-public class NaturalNumber { 
+public class 1a { 
 
 	public static void main(String[] args) { 
 

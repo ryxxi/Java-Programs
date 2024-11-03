@@ -41,7 +41,6 @@ public class NokiaMenus {
 					9.  Speed dials
 					10. Voice
 					11. Return
-					12. Power Off
 
 					""";
 
@@ -54,7 +53,6 @@ public class NokiaMenus {
 					1. Type of view
 					2. Memory Status
 					3. Return
-					4. Power Off
 
 					""";
 
@@ -75,7 +73,6 @@ public class NokiaMenus {
 					9.  Voice mailbox number
 					10. Service command editor
 					11. Return
-					12. Power Off
 
 					""";
 
@@ -88,7 +85,6 @@ public class NokiaMenus {
 					1. Set 1
 					2. Common
 					3. Return
-					4. Power Off
 
 					""";
 
@@ -102,7 +98,6 @@ public class NokiaMenus {
 					2. Messages sent as
 					3. Message validity
 					4. Return
-					5. Power Off
 
 					""";
 
@@ -116,7 +111,6 @@ public class NokiaMenus {
 					2. Reply via same centre
 					3. Character support
 					4. Return
-					5. Power Off
 
 					""";
 
@@ -137,7 +131,6 @@ public class NokiaMenus {
 					7.  Call cost settings
 					8.  Prepaid credit
 					9.  Return
-					10. Power Off
 
 					""";
 
@@ -153,7 +146,6 @@ public class NokiaMenus {
 					4. Dialled calls' duration
 					5. Clear timers
 					6. Return
-					7. Power Off
 
 					""";
 
@@ -167,7 +159,6 @@ public class NokiaMenus {
 					2. All calls' cost
 					3. Clear counters
 					4. Return
-					5. Power Off
 
 					""";
 
@@ -180,8 +171,6 @@ public class NokiaMenus {
 					1. Call cost settings
 					2. Show costs in
 					3. Return
-					4. Power Off
-
 
 					""";
 
@@ -201,7 +190,6 @@ public class NokiaMenus {
 					8.  Vibrating alert
 					9.  Screen saver
 					10. Return
-					11. Power Off
 
 					""";
 
@@ -215,6 +203,7 @@ public class NokiaMenus {
 					2. Phone settings
 					3. Security settings
 					4. Restore factory settings
+					5. Return
 
 					""";
 
@@ -231,7 +220,6 @@ public class NokiaMenus {
 					5. Phone line in use
 					6. Automatic answer
 					7. Return
-					8. Power Off
 
 					""";
 
@@ -248,7 +236,6 @@ public class NokiaMenus {
 					5. Lights
 					6. Confirm SIM service actions
 					7. Return
-					8. Power Off
 
 					""";
 
@@ -265,7 +252,6 @@ public class NokiaMenus {
 					5. Phone security
 					6. Change access codes
 					7. Return
-					8. Power Off
 
 					""";
 
@@ -290,7 +276,6 @@ public class NokiaMenus {
 					5. Countdown timer
 					6. Auto update of date and time
 					7. Return
-					8. Power Off
 
 					""";
 

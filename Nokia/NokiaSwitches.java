@@ -4,24 +4,44 @@ public class NokiaSwitches {
 
 	private static Scanner input = new Scanner(System.in);
 	private NokiaMenus menuCaller = new NokiaMenus();
-	private NokiaSwitches switchCaller = new NokiaSwitches();
+	private int phoneBookAnswer;
+	private int messagesAnswer;
+	private int messageSettingsAnswer;
+	private int callRegisterAnswer;
+	private int settingsAnswer;
+	private int tonesAnswer;
+	private int clockAnswer;
+	private int menuAnswer;
 
-	public void mainMenuSwitch() {
+	private boolean returnToPhoneBook = false;
 
-		System.out.print(menuCaller.mainMenu);
-		int menuAnswer = input.nextInt();		
+
+	public void mainMenuSwitch(int menuAnswer) {
+
+	phoneBookAnswer = 0;
+	messagesAnswer = 0;
+	messageSettingsAnswer = 0;
+	callRegisterAnswer = 0;
+	settingsAnswer = 0;
+	tonesAnswer = 0;
+	clockAnswer = 0;
 
 		switch (menuAnswer) {
 
+		case 0: System.out.print(menuCaller.mainMenu);
+			menuAnswer = input.nextInt();
+			mainMenuSwitch(menuAnswer);
+			break;
+
 		case 1:
 			System.out.print(menuCaller.phoneBookMenu);
-			int phoneBookAnswer = input.nextInt();
+			phoneBookAnswer = input.nextInt();
 			phoneBookSwitch(phoneBookAnswer);
 			break;
 
 		case 2:
 			System.out.print(menuCaller.messagesMenu);
-			int messagesAnswer = input.nextInt();
+			messagesAnswer = input.nextInt();
 			messagesSwitch(messagesAnswer);
 			break;
 
@@ -31,19 +51,19 @@ public class NokiaSwitches {
 
 		case 4:
 			System.out.print(menuCaller.callRegisterMenu);
-			int callRegisterAnswer = input.nextInt();
+			callRegisterAnswer = input.nextInt();
 			callRegisterSwitch(callRegisterAnswer);
 			break;
 
 		case 5:
 			System.out.print(menuCaller.tonesMenu);
-			int tonesAnswer = input.nextInt();
+			tonesAnswer = input.nextInt();
 			tonesSwitch(tonesAnswer);
 			break;
 
 		case 6:
 			System.out.print(menuCaller.settingsMenu);
-			int settingsAnswer = input.nextInt();
+			settingsAnswer = input.nextInt();
 			settingsSwitch(settingsAnswer);
 			break;
 
@@ -65,7 +85,8 @@ public class NokiaSwitches {
 
 		case 11:
 			System.out.print(menuCaller.clockMenu);
-			int clockAnswer = input.nextInt();
+			clockAnswer = input.nextInt();
+			clockSwitch(clockAnswer);
 			break;
 
 		case 12:
@@ -81,9 +102,7 @@ public class NokiaSwitches {
 			break;
 
 		default:
-			System.out.print("\n\nInvald input\n\n");
-			switchCaller.mainMenuSwitch();
-			break;
+			System.out.print("\nInvalid input\n"); break;
 
 		}
 
@@ -91,7 +110,11 @@ public class NokiaSwitches {
 
 	public void phoneBookSwitch(int phoneBookAnswer) {
 
-		if (phoneBookAnswer == 11) switchCaller.mainMenuSwitch();
+		if (phoneBookAnswer == 11 | returnToPhoneBook) {
+		mainMenuSwitch(0);
+		return;
+		}
+		else {
 
 		switch (phoneBookAnswer) {
 
@@ -109,8 +132,9 @@ public class NokiaSwitches {
 			
 			case 9: System.out.println("\nSpeed dials\n"); break;
 			case 10: System.out.println("\nVoice\n"); break;
-			default: System.out.print("\n\nInvalid input\n\n");
-				switchCaller.phoneBookSwitch(phoneBookAnswer
+			default: System.out.print("\nInvalid input\n"); break;
+
+		}
 
 		}
 
@@ -118,15 +142,19 @@ public class NokiaSwitches {
 
 	public void optionsSwitch(int optionsAnswer) {
 
-		if (optionsAnswer == 3) switchCaller.phoneBookSwitch(phoneBookAnswer);
+		if (optionsAnswer == 3) {
+		mainMenuSwitch(1);
+		return;
+		}
+		else {
 
 		switch (optionsAnswer) {
 
 			case 1: System.out.println("\nType of view\n"); break;
 			case 2: System.out.println("\nMemory status\n"); break;
-			default: System.out.println("\nInvalid input\n");
-				switchCaller.optionsSwitch(optionsAnswer);
-				break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
 
 		}
 
@@ -134,12 +162,16 @@ public class NokiaSwitches {
 
 	public void messagesSwitch(int messagesAnswer) {
 
-		if (messagesAnswer == 11) switchCaller.mainMenuSwitch();
+		if (messagesAnswer == 11) {
+		mainMenuSwitch(0);
+		return;
+		}
+		else {
 
 		switch (messagesAnswer) {
 
 			case 1: System.out.println("\nWrite messages\n"); break;
-			case 2: System.out.println("\nInboc\n"); break;
+			case 2: System.out.println("\nInbox\n"); break;
 			case 3: System.out.println("\nOutbox\n"); break;
 			case 4: System.out.println("\nPicture messages\n"); break;
 			case 5: System.out.println("\nTemplates\n"); break;
@@ -152,9 +184,9 @@ public class NokiaSwitches {
 			case 8: System.out.println("\nInfo service\n"); break;
 			case 9: System.out.println("\nVoice mailbox number\n"); break;
 			case 10: System.out.println("\nService command editor\n"); break;
-			default: System.out.println("\nInvalid input\n");
-				switchCaller.messagesSwitch(messagesAnswer);
-				break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
 
 		}
 
@@ -162,7 +194,11 @@ public class NokiaSwitches {
 
 	public void messageSettingsSwitch(int messageSettingsAnswer) {
 
-		if (messageSettingsAnswer == 3) switchCaller.messagesSwitch(messagesAnswer);
+		if (messageSettingsAnswer == 3) {
+		mainMenuSwitch(2);
+		return;
+		}
+		else {
 
 		switch (messageSettingsAnswer) {
 
@@ -175,9 +211,9 @@ public class NokiaSwitches {
 				int commonAnswer = input.nextInt();
 				commonSwitch(commonAnswer);
 				break;
-			default: System.out.print("\n\nInvalid input\n\n");
-					switchCaller.messageSettingsSwitch(messageSettingsAnswers);
-					break;
+			default: System.out.print("\nInvalid input\n"); break;
+
+		}
 
 		}
 
@@ -185,16 +221,20 @@ public class NokiaSwitches {
 
 	public void setOneSwitch(int setOneAnswer) {
 
-		if (setOneAnswer == 4) switchCaller.messageSettingsSwitch(messageSettingsAnswer);
+		if (setOneAnswer == 4) {
+		mainMenuSwitch(2);
+		return;
+		}
+		else {
 
 		switch (setOneAnswer) {
 
 			case 1: System.out.println("\nMessage centre number\n"); break;
 			case 2: System.out.println("\nMessages sent as\n"); break; 
 			case 3: System.out.println("\nMessage validity\n"); break; 
-			default: System.out.println("\nInvalid input\n");
-				switchCaller.setOneSwitch(setOneAnswer);
-				break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
 
 		}
 
@@ -202,16 +242,20 @@ public class NokiaSwitches {
 
 	public void commonSwitch(int commonAnswer) {
 
-		if (commonAnswer == 4) switchCaller.messageSettingsSwitch(messageSettingsAnswer);
+		if (commonAnswer == 4) {
+		mainMenuSwitch(2);
+		return;
+		}
+		else {
 
 		switch (commonAnswer) {
 
 			case 1: System.out.println("\nDelivery reports\n"); break;
 			case 2: System.out.println("\nReply via same centre\n"); break; 
 			case 3: System.out.println("\nCharacter support\n"); break; 
-			default: System.out.println("\nInvalid input\n");
-				switchCaller.commonSwitch(commonAnswer);
-				break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
 
 		}
 
@@ -219,7 +263,11 @@ public class NokiaSwitches {
 
 	public void callRegisterSwitch(int callRegisterAnswer) {
 
-		if (callRegisterAnswer == 9) switchCaller.mainMenuSwitch();
+		if (callRegisterAnswer == 9) {
+		mainMenuSwitch(0);
+		return;
+		}
+		else {
 
 		switch (callRegisterAnswer) { 
 
@@ -243,6 +291,9 @@ public class NokiaSwitches {
 				break;
 
 			case 8: System.out.println("\nPrepaid credit\n"); break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
 
 		}
 
@@ -250,7 +301,225 @@ public class NokiaSwitches {
 
 	public void showCallDurationSwitch(int showCallDurationAnswer) {
 
-		if (showCallDurationAnswer == 6
+		if (showCallDurationAnswer == 6) {
+		mainMenuSwitch(4);
+		return;
+		}
+		else {
+
+		switch (showCallDurationAnswer) {
+
+			case 1: System.out.print("\nLast call duration\n"); break;
+			case 2: System.out.print("\nAll calls' duration\n"); break;
+			case 3: System.out.print("\nReceived call's duration\n"); break;
+			case 4: System.out.print("\nDialled calls' duration\n"); break;
+			case 5: System.out.print("\nTimers cleared\n"); break;
+			default: System.out.print("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void showCallCostsSwitch(int showCallCostsAnswer) {
+
+		if (showCallCostsAnswer == 4) {
+		mainMenuSwitch(4);
+		return;
+		}
+		else {
+
+		switch (showCallCostsAnswer) {
+
+			case 1: System.out.print("\nLast call cost\n"); break;
+			case 2: System.out.print("\nAll calls' cost\n"); break;
+			case 3: System.out.print("\nCounters cleared\n"); break;
+			default: System.out.print("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void callCostSettingsSwitch(int callCostSettingsAnswer) {
+
+		if (callCostSettingsAnswer == 3) {
+		mainMenuSwitch(4);
+		return;
+		}
+		else {
+
+		switch (callCostSettingsAnswer) {
+
+			case 1: System.out.print("\nCall cost settings\n"); break;
+			case 2: System.out.print("\nShow costs in\n"); break;
+			default: System.out.print("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void tonesSwitch(int tonesAnswer) {
+
+		if (tonesAnswer == 10) {
+		mainMenuSwitch(0);
+		return;
+		}
+		else {
+
+		switch (tonesAnswer) {
+
+			case 1: System.out.println("\nRinging tone\n"); break;
+			case 2: System.out.println("\nRinging volume\n"); break;
+			case 3: System.out.println("\nIncoming call alert\n"); break;
+			case 4: System.out.println("\nComposer\n"); break;
+			case 5: System.out.println("\nMessage alert tone\n"); break;
+			case 6: System.out.println("\nKeypad tones\n"); break;
+			case 7: System.out.println("\nWarning and game tone\n"); break;
+			case 8: System.out.println("\nVibrating alert\n"); break;
+			case 9: System.out.println("\nScreen saver\n"); break;
+			default: System.out.print("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void settingsSwitch(int settingsAnswer) {
+
+		if (settingsAnswer == 5) {
+		mainMenuSwitch(0);
+		return;
+		}
+		else {
+
+		switch (settingsAnswer) {
+
+			case 1: System.out.println(menuCaller.callSettingsMenu);
+				int callSettingsAnswer = input.nextInt();
+				callSettingsSwitch(callSettingsAnswer);
+				break;
+
+			case 2: System.out.print(menuCaller.phoneSettingsMenu);
+				int phoneSettingsAnswer = input.nextInt();
+				phoneSettingsSwitch(phoneSettingsAnswer);
+				break;
+
+			case 3: System.out.println(menuCaller.securitySettingsMenu);
+				int securitySettingsAnswer = input.nextInt();
+				securitySettingsSwitch(securitySettingsAnswer);
+				break;
+
+			case 4: System.out.println("\nRestore factory settings\n"); break;
+			default: System.out.print("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void callSettingsSwitch(int callSettingsAnswer) {
+
+		if (callSettingsAnswer == 7) {
+		mainMenuSwitch(6);
+		return;
+		}
+		else {
+
+		switch (callSettingsAnswer) {
+
+			case 1: System.out.println("\nAutomatic redial\n"); break;
+			case 2: System.out.println("\nSpeed dialling\n"); break;
+			case 3: System.out.println("\nCall waiting options\n"); break;
+			case 4: System.out.println("\nOwn number sending\n"); break;
+			case 5: System.out.println("\nPhone line in use\n"); break;
+			case 6: System.out.println("\nAutomatic answer\n"); break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void phoneSettingsSwitch(int phoneSettingsAnswer) {
+
+		if (phoneSettingsAnswer == 7) {
+		mainMenuSwitch(6);
+		return;
+		}
+		else {
+
+		switch (phoneSettingsAnswer) {
+
+			case 1: System.out.println("\nLanguage\n"); break;
+			case 2: System.out.println("\nCell info display\n"); break;
+			case 3: System.out.println("\nWelcome note\n"); break;
+			case 4: System.out.println("\nNetwork selection\n"); break;
+			case 5: System.out.println("\nLights\n"); break;
+			case 6: System.out.println("\nConfirm SIM service actions\n"); break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void securitySettingsSwitch(int securitySettingsAnswer) {
+
+		if (securitySettingsAnswer == 7) {
+		mainMenuSwitch(6);
+		return;
+		}
+		else {
+
+		switch (securitySettingsAnswer) {
+
+			case 1: System.out.println("\nPIN code request\n"); break;
+			case 2: System.out.println("\nCall barring service\n"); break;
+			case 3: System.out.println("\nFixed dialling\n"); break;
+			case 4: System.out.println("\nClosed user group\n"); break;
+			case 5: System.out.println("\nPhone security\n"); break;
+			case 6: System.out.println("\nChange access codes\n"); break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
+	public void clockSwitch(int clockAnswer) {
+
+		if (clockAnswer == 7) {
+		mainMenuSwitch(0);
+		return;
+		}
+		else {
+
+		switch (clockAnswer) {
+
+			case 1: System.out.println("\nAlarm clock\n"); break;
+			case 2: System.out.println("\nClock settings\n"); break;
+			case 3: System.out.println("\nDate setting\n"); break;
+			case 4: System.out.println("\nStopwatch\n"); break;
+			case 5: System.out.println("\nCountdown timer\n"); break;
+			case 6: System.out.println("\nAuto update of date and time\n"); break;
+			default: System.out.println("\nInvalid input\n"); break;
+
+		}
+
+		}
+
+	}
+
 }
 
 

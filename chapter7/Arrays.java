@@ -2,26 +2,16 @@ public class Arrays {
 
 	public static void main(String... args) {
 
-		int[] array = new int [6];
+		int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-		int a = counter;
-		int b = array[counter];
-		int result = counter;
+		int total = 0;
 
-		for(int counter = 0; counter < array.length; counter++) {
-		array[counter] = counter + 1;
+		System.out.println("Index
+		for (int count = 0; count < 10; count++) {
+			System.out.print(array[count];
 		}
 
-		System.out.printf("%s%8s%8s%n", "a", "b", "pow(a, b)");
-
-		for(int counter = 0; counter < array.length; counter++) {
-			while(a < b) {
-			result *= a;
-			a++;
-			}
-		array[counter] = counter + 1;
-		System.out.printf("%d%8d%8d%n", a, b, result);
-		}
+		System.out.println("The sum of the first 10 natural numbers is " + total);
 
 	}
 

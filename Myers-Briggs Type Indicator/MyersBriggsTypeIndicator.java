@@ -21,14 +21,14 @@ public class MyersBriggsTypeIndicator {
 		questions[8] = "A. Seek many tasks, public activities, interaction with others\t\tB. Seek private, solitary activities with quiet to concentrate";
 		questions[9] = "A. Standard, usual, conventional\t\tB. Different, novel, unique";
 		questions[10] = "A. Firm, tend to criticise, hold the line\t\tB. Gentle, tend to appreciate, conciliate";
-		questions[11] = "A. Regulated, structured\t\tB. Easygoing, \"live\" and \"let live \"";
+		questions[11] = "A. Regulated, structured\t\tB. Easygoing, \"live\" and \"let live\"";
 		questions[12] = "A. External, communicative, express yourself\t\tB. Internal, reticent, keep to yourself";
 		questions[13] = "A. Focus on here-and-now\t\tB. Look to the future, global perspectives, \"big picture\"";
 		questions[14] = "A. Tough minded, just\t\tB. tender-hearted, merciful";
 		questions[15] = "A. Preparation, plan ahead\t\tB. Go with the flow, adapt as you go";
 		questions[16] = "A. Active, initiate\t\tB. Reflective, deliberate";
 		questions[17] = "A. Facts, things, \"what is\"\t\tB. Ideas, dreams, \"what could be\", philosophical";
-		questions[18] = "A. Matter of fact, issue-orientated\t\tB. sensitive, people-orientated, compassionate";
+		questions[18] = "A. Matter of fact, issue-orientated\t\tB. Sensitive, people-orientated, compassionate";
 		questions[19] = "A. Control, govern\t\tB. Latitude, freedom";
 
 		String response;
@@ -115,7 +115,6 @@ public class MyersBriggsTypeIndicator {
 				Number of A's selected: %d
 				Number of B's Selected: %d
 
-
 				""", judgingCounter, perceptiveCounter);
 
 		if (extrovertedCounter > introvertedCounter) System.out.print("E");
@@ -128,7 +127,7 @@ public class MyersBriggsTypeIndicator {
 		else System.out.print("F");
 
 		if (judgingCounter > perceptiveCounter) System.out.println("J");
-		else System.out.println("P");
+		else System.out.println("P\n");
 		
 
 	}

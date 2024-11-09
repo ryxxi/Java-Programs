@@ -40,7 +40,7 @@ public class LetterRhombus {
 
 			System.out.println("");
 			firstLetter = 'A';
-			letter = '@';
+			letter = '@' - 1;
 			finalLetter = letter+=(i);
 
 		}

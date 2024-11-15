@@ -5,6 +5,7 @@ public class MyersBriggsTypeIndicator {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
+		MBTIDescriptions switchcaller = new MBTIDescriptions();
 
 		System.out.println("What is your name?");
 		String name = input.nextLine();
@@ -117,18 +118,17 @@ public class MyersBriggsTypeIndicator {
 
 				""", judgingCounter, perceptiveCounter);
 
-		if (extrovertedCounter > introvertedCounter) System.out.print("E");
-		else System.out.print("I");
+		String mbtiType = "";
+		mbtiType += (extrovertedCounter > introvertedCounter) ? "E" : "I";
+		mbtiType += (sensingCounter > intuitiveCounter) ? "S" : "N";
+		mbtiType += (thinkingCounter > feelingCounter) ? "T" : "F";
+		mbtiType += (judgingCounter > perceptiveCounter) ? "J" : "P";
 
-		if (sensingCounter > intuitiveCounter) System.out.print("S");
-		else System.out.print("N");
+		System.out.println(mbtiType);
 
-		if (thinkingCounter > feelingCounter) System.out.print("T");
-		else System.out.print("F");
+		switchcaller.descriptionSwitch(mbtiType);
 
-		if (judgingCounter > perceptiveCounter) System.out.println("J");
-		else System.out.println("P\n");
-		
+		System.out.println();
 
 	}
 

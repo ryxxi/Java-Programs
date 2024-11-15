@@ -6,6 +6,7 @@ public class MyersBriggsTypeIndicator {
 
 		Scanner input = new Scanner(System.in);
 		MBTIDescriptions switchcaller = new MBTIDescriptions();
+		MBTIClear clear = new MBTIClear();
 
 		System.out.println("What is your name?");
 		String name = input.nextLine();
@@ -56,6 +57,7 @@ public class MyersBriggsTypeIndicator {
 			if (userInput.equalsIgnoreCase("A") || userInput.equalsIgnoreCase("B")) {
 				responses[currentQuestion] = userInput.toUpperCase().charAt(0);
 				currentQuestion++;
+				
 			}
 
 			else {
@@ -83,6 +85,8 @@ public class MyersBriggsTypeIndicator {
 			if (responses[index] == 'A') judgingCounter ++;
 			else perceptiveCounter ++;
 		}
+
+		clear.clearTerminal();
 
 		System.out.println("Hello " + name);
 		System.out.printf("""

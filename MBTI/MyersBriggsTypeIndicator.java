@@ -7,6 +7,7 @@ public class MyersBriggsTypeIndicator {
 		Scanner input = new Scanner(System.in);
 		MBTIDescriptions switchcaller = new MBTIDescriptions();
 		MBTIClear clear = new MBTIClear();
+		//QuestionDecision decider = new QuestionDecision();
 
 		System.out.println("What is your name?");
 		String name = input.nextLine();
@@ -33,8 +34,6 @@ public class MyersBriggsTypeIndicator {
 		questions[18] = "A. Matter of fact, issue-orientated\t\tB. Sensitive, people-orientated, compassionate";
 		questions[19] = "A. Control, govern\t\tB. Latitude, freedom";
 
-		String response;
-
 		int extrovertedCounter = 0;
 		int introvertedCounter = 0;
 		int sensingCounter = 0;
@@ -45,10 +44,8 @@ public class MyersBriggsTypeIndicator {
 		int perceptiveCounter = 0;
 
 		int currentQuestion = 0;
-
 		char[] responses = new char[20];
 
-		
 		while (currentQuestion < 20) {
 
 			System.out.println(questions[currentQuestion]);
@@ -57,10 +54,11 @@ public class MyersBriggsTypeIndicator {
 			if (userInput.equalsIgnoreCase("A") || userInput.equalsIgnoreCase("B")) {
 				responses[currentQuestion] = userInput.toUpperCase().charAt(0);
 				currentQuestion++;
-				
+				clear.clearTerminal();	
 			}
 
 			else {
+				clear.clearTerminal();
 				System.out.println("Invalid input");
 			}
 

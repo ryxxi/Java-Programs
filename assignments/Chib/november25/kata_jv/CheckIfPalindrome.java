@@ -9,7 +9,15 @@ public class CheckIfPalindrome {
 		System.out.print("Enter a 5-digit integer: ");
 		String number = input.nextLine();
 
-		checkIfPalindrome(number);
+		if (checkLength(number)) {
+
+			checkIfPalindrome(number);
+
+		} else {
+
+			System.out.println("Not 5 digits");
+
+		}
 
 	}
 
@@ -27,6 +35,16 @@ public class CheckIfPalindrome {
 		if (reverse.equals(string)) isPalindrome = true;
 
 		System.out.print(isPalindrome?"It is a palindrome\n":"It isn't a palindrome\n");
+
+	}
+
+	public static boolean checkLength(String string) {
+
+		boolean isFiveDigits = false;
+
+		if (string.length() == 5) isFiveDigits = true;
+
+		return isFiveDigits;
 
 	}
 

@@ -1,0 +1,11 @@
+
+# Setting PATH for Python 3.13
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
+export PATH
+
+
+# CUSTOM ALIASES
+alias pyut="python3 -m unitttest"
+alias jutc="javac -cp 'junit-platform-console-standalone-1.11.3.jar'"
+alias jutexe="java -jar 'junit-platform-console-standalone-1.11.3.jar' --class-path . --scan-classpath --include-classname"

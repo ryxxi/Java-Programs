@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.IntStream.range;
+import java.util.stream.IntStream.rangeClosed;
 
 public class PrimeFactor {
 
@@ -6,71 +9,25 @@ public class PrimeFactor {
 
 		Scanner input = new Scanner(System.in);
 
-		System.out.print("Enter an integer to find prime factors: ");
-		int number = input.nextInt();
-		int dupeNumber = number;
-		boolean isNotPrime = false;
+		System.out.print("Enter an integer: ");
+		int integer = input.nextInt();
 
-		int checkDivider = 2;
-		int divider = 2;
-
-		while (checkDivider < number) {
-
-			int divider = checkDivider;
-
-			while (temp < divider) {
-
-				int result = divider % temp;
-
-				if (divider != temp && result != 0) temp++;
-
-				else {
-					isNotPrime = true;
-					break;
-				}
-
-			}
-
-			if (!isNotPrime) {
-				checkDivider
-
-
-
-
-
-
-
-		}
-
-		for (int checkDivider = 2; checkDivider < number; checkDivider++) {
-
-			int divider = checkDivider;
-
-			for (int temp = 2; temp < divider; divider++) {
-
-				if (divider % temp == 0)
-
-				}
+		getPrimeFactors(integer);
 
 	}
 
-}
+	public static int[] primesBeforeNumber(int integer) {
+
+		
 
 
 
 
 
+	public static boolean checkIfPrime(int number) {
 
+		boolean isPrime = IntStream.range(2, number).filter(x -> if(number % x == 				0)).toArray() == 0;
 
+		return isPrime;
 
-
-
-
-
-
-
-
-
-
-
-
+	}

@@ -6,7 +6,7 @@ public class StudentGradeBookTest {
 	StudentGradeBook caller = new StudentGradeBook("Phase Gate", 4, 3);
 	@Test
 	
-	public void testFunctionExists() {
+	public void test() {
 
 		caller.gradeBook();
 

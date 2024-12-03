@@ -164,7 +164,7 @@ public class StudentGradeBook {
 
 		}
 
-		System.out.printf("Subject %d's highest grade is %d, achieved by Student %d%n%n", subject, highestGrade, bestStudent);
+		System.out.printf("Exam %d's highest grade is %d, achieved by Student %d%n%n", subject, highestGrade, bestStudent);
 
 	}
 
@@ -194,7 +194,7 @@ public class StudentGradeBook {
 
 	public void printSpecificBarChart(int subject) {
 
-		System.out.printf("%nSubject %d's Distribution of Results:%n", subject);
+		System.out.printf("%nExam %d's Distribution of Results:%n", subject);
 		printSpecificSingleBars();
 
 		int[] frequency = new int[11];

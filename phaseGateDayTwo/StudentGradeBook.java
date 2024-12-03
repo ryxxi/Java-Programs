@@ -77,7 +77,7 @@ public class StudentGradeBook {
 
 			if(!Character.isDigit(string.charAt(i))) return false;
 
-				if (Integer.parseInt(string) < 0 || Integer.parseInt(string) > (examse)) return false;
+				if (Integer.parseInt(string) < 0 || Integer.parseInt(string) > (exams)) return false;
 
 		}
 		return true;
@@ -93,7 +93,7 @@ public class StudentGradeBook {
 			outputGrades();
 
 			input.nextLine();
-			System.out.println("Would you like to see another subject's grades?(Y/N)");
+			System.out.println("Would you like to continue viewing?(Y/N)");
 			userChoice = input.nextLine();
 
 		} while (userChoice.toUpperCase().charAt(0) == 'Y');
@@ -102,51 +102,31 @@ public class StudentGradeBook {
 
 	public void outputGrades() {
 
-			System.out.print("\033[H\033[2J");
-      			System.out.flush();
+		System.out.print("\033[H\033[2J");
+      		System.out.flush();
 
-			String userInput = "";
+		System.out.println("Select:\n\n1. View Specific Exam Results\n2. View All Exam Results\n");
+		String userChoice = input.nextLine();
 
-			do{
-			
-				System.out.printf("Which exam's grades do you wish to see? (1 - %d)%n", exams);
-				userInput = input.nextLine();
+		switch (userChoice.toUpperCase()) {
 
-				if (!isExamInvalid(userInput)) System.out.println("Invalid input, try again");
+			case "1":
+				displaySpecificExam();
+				break;
 
-			} while (!isExamInvalid(userInput));
+			case "2":
+				displayAllExams();
+				break;
 
-			int exam = Integer.parseInt(userInput);
+			default:
+				System.out.println("Invalid input, try again");
+				displayAll();
 
-			System.out.print("\033[H\033[2J");
-      			System.out.flush();
-
-			System.out.printf("%s%nExam %d%n", getCourseName(), exam);
-
-			printSingleBars();
-
-			for (int student = 1; student <= students; student++) {
-
-				System.out.printf("Student %d: %2d%n", student, grades[student-1][exam-1]);
-
-			}
-			printSingleBars();
-			printSingleBars();
-
-			System.out.printf("TOTAL Grade: %d%n", getTotal(exam));
-
-			System.out.printf("MEAN Grade: %.1f%n", getMean(exam));
-
-			getHighestScorer(exam);
-
-			printDoubleBars();
-			printDoubleBars();
-
-			printBarChart(exam);
+		}		
 
 	}
 
-	public int getTotal(int subject) {
+	public int getExamTotal(int subject) {
 
 		int total = 0;
 
@@ -160,9 +140,9 @@ public class StudentGradeBook {
 
 	}
 
-	public double getMean(int subject) {
+	public double getExamMean(int subject) {
 
-		double mean = (double) getTotal(subject) / students;
+		double mean = (double) getExamTotal(subject) / students;
 
 		return mean;
 
@@ -188,7 +168,7 @@ public class StudentGradeBook {
 
 	}
 
-	public void printDoubleBars() {
+	public void printSpecificDoubleBars() {
 
 		for (int i = 0; i < 50; i++) {
 
@@ -200,7 +180,7 @@ public class StudentGradeBook {
 
 	}
 
-	public void printSingleBars() {
+	public void printSpecificSingleBars() {
 
 		for (int i = 0; i < 50; i++) {
 
@@ -212,10 +192,10 @@ public class StudentGradeBook {
 
 	}
 
-	public void printBarChart(int subject) {
+	public void printSpecificBarChart(int subject) {
 
 		System.out.printf("%nSubject %d's Distribution of Results:%n", subject);
-		printSingleBars();
+		printSpecificSingleBars();
 
 		int[] frequency = new int[11];
 
@@ -247,6 +227,207 @@ public class StudentGradeBook {
 		}
 
 	}
+
+	public void displaySpecificExam() {
+
+		String userInput = "";
+
+		do{
+			
+			System.out.printf("Which exam's grades do you wish to see? (1 - %d)%n", exams);
+			userInput = input.nextLine();
+
+			if (!isExamInvalid(userInput)) System.out.println("Invalid input, try again");
+
+		} while (!isExamInvalid(userInput));
+
+		int exam = Integer.parseInt(userInput);
+
+		System.out.print("\033[H\033[2J");
+      		System.out.flush();
+
+		System.out.printf("%s%nExam %d%n", getCourseName(), exam);
+
+		printSpecificSingleBars();
+
+		for (int student = 1; student <= students; student++) {
+
+			System.out.printf("Student %d: %2d%n", student, grades[student-1][exam-1]);
+
+		}
+		printSpecificSingleBars();
+		printSpecificSingleBars();
+
+		System.out.printf("TOTAL Grade: %d%n", getExamTotal(exam));
+
+		System.out.printf("MEAN Grade: %.1f%n", getExamMean(exam));
+
+		getHighestScorer(exam);
+
+		printSpecificDoubleBars();
+		printSpecificDoubleBars();
+
+		printSpecificBarChart(exam);
+
+	}
+
+	public void displayAllExams() {
+
+		System.out.print("Student");
+
+		for (int exam = 1; exam <= exams; exam++) {
+
+			System.out.printf("\tExam%d", exam);
+
+		}
+
+		System.out.println("\tMean\tTotal\n");
+
+		displayAllStudents();
+
+		printAllSingleBars();
+
+		System.out.printf("TOTAL: %d%n", getAllTotal());
+		System.out.printf("MEAN: %.1f%n", getAllMean());
+
+		printAllSingleBars();
+		printAllSingleBars();
+
+		printAllBarChart();
+
+	}
+
+	public void displayAllStudents() {
+
+		for (int student = 1; student <= students; student++) {
+
+			System.out.printf("Stud%d", student);
+
+			for (int exam = 1; exam <= exams; exam++) {
+
+				System.out.printf("\t%d", grades[student-1][exam-1]);
+
+			}
+
+		System.out.printf("\t%d", getStudentTotal(student));
+		System.out.printf("\t%.1f", getStudentMean(student));
+		System.out.println("\n");
+
+		}
+
+	}
+
+	public int getStudentTotal(int student) {
+
+		int total = 0;
+
+		for (int exam = 1; exam <= exams; exam++) {
+
+			total += grades[student-1][exam-1];
+
+		}
+
+		return total;
+
+	}
+
+	public double getStudentMean(int student) {
+
+		double mean = (double) getStudentTotal(student) / exams;
+
+		return mean;
+
+	}
+
+	public int getAllTotal() {
+
+		int total = 0;
+
+		for (int student = 1; student < students; student++) {
+
+			for (int exam = 1; exam < exams; exam++) {
+
+				total += grades[student-1][exam-1];
+
+			}
+
+		}
+
+		return total;
+
+	}
+
+	public double getAllMean() {
+
+		double mean = (double) getAllTotal() / (students * exams);
+
+		return mean;
+
+	}
+
+	public void printAllBarChart() {
+
+		System.out.println("Distribution of All Results:");
+		printAllSingleBars();
+
+		int[] frequency = new int[11];
+
+		for (int student = 1; student <= students; student++) {
+
+			for (int exam = 1; exam <= exams; exam++) {
+
+				int percentage = grades[student-1][exam-1] / 10;
+				frequency[percentage]++;
+
+			}
+
+		}
+
+		for (int count = 0; count < frequency.length; count++) {
+
+			if (count == 10) System.out.printf("%5d:", 100);
+
+			else {
+
+				System.out.printf("%02d-%02d:", count * 10, (count * 10) + 9);
+
+			}
+
+			for (int stars = 0; stars < frequency[count]; stars++) {
+
+				System.out.print("* ");
+
+			}
+
+			System.out.println();
+
+		}
+
+	}
+
+	public void printAllDoubleBars() {
+
+		for (int i = 0; i < 80; i++) {
+
+			System.out.print("=");
+
+		}
+		
+		System.out.println();
+
+	}
+
+	public void printAllSingleBars() {
+
+		for (int i = 0; i < 80; i++) {
+
+			System.out.print("-");
+
+		}
+		
+		System.out.println();
+
+	}		
 
 }
 		

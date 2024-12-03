@@ -27,7 +27,7 @@ public class StudentGradeBook {
 
 		grades = obtainGrades();
 
-		outputGrades();
+		displayAll();
 
 	}
 
@@ -50,31 +50,53 @@ public class StudentGradeBook {
 
 	public void displayAll() {
 
-		outputGrades();
+		String userChoice = "";
 
-		printDoubleBars();
-		printDoubleBars();
+		do {
+			
+			outputGrades();
+
+			input.nextLine();
+			System.out.println("Would you like to see another subject's grades?(Y/N)");
+			userChoice = input.nextLine();
+
+		} while (userChoice.toUpperCase().charAt(0) == 'Y');
 
 	}
 
 	public void outputGrades() {
 
-		System.out.println("Which subjects grades do you wish to see?");
-		int subject = input.nextInt();
+			System.out.print("\033[H\033[2J");
+      			System.out.flush();
 
-		System.out.printf("Subject %d Grades:%n", subject);
+			System.out.println("Which subjects grades do you wish to see?");
+			int subject = input.nextInt();
 
-		for (int student = 1; students <= students; student++) {
+			System.out.print("\033[H\033[2J");
+      			System.out.flush();
 
-			System.out.printf("Student %d: %2d%n", student, grades[student-1][subject-1]);
+			System.out.printf("%s%nExam %d%n", getCourseName(), subject);
 
-		}
+			printSingleBars();
 
-		System.out.printf("Subject %d's total grade: %d", subject, getTotal(subject));
+			for (int student = 1; student <= students; student++) {
 
-		System.out.printf("Subject %d's mean grade: %d", subject, getMean(subject));
+				System.out.printf("Student %d: %2d%n", student, grades[student-1][subject-1]);
 
-		getHighestScorer(subject);
+			}
+			printSingleBars();
+			printSingleBars();
+
+			System.out.printf("TOTAL Grade: %d%n", subject, getTotal(subject));
+
+			System.out.printf("MEAN Grade: %.1f%n", subject, getMean(subject));
+
+			getHighestScorer(subject);
+
+			printDoubleBars();
+			printDoubleBars();
+
+			printBarChart(subject);
 
 	}
 
@@ -82,7 +104,7 @@ public class StudentGradeBook {
 
 		int total = 0;
 
-		for (int student = 1; students <= students; student++) {
+		for (int student = 1; student <= students; student++) {
 
 			total += grades[student-1][subject-1];
 
@@ -102,21 +124,21 @@ public class StudentGradeBook {
 
 	public void getHighestScorer(int subject) {
 
-		int highestGrade = grades[0][subject];
-		int bestStudent = 0;
+		int highestGrade = grades[0][subject-1];
+		int bestStudent = 1;
 
-		for (int student = 1; students <= students; student++) {
+		for (int student = 1; student <= students; student++) {
 
-			if (grades[student][subject-1] > highestGrade) {
+			if (grades[student-1][subject-1] > highestGrade) {
 
 				highestGrade = grades[student][subject-1];
-				bestStudent = student;
+				bestStudent = student + 1;
 
 			}
 
 		}
 
-		System.out.printf("Subject %d's highest grade is %d, achieved by Student %d", subject, highestGrade, bestStudent);
+		System.out.printf("Subject %d's highest grade is %d, achieved by Student %d%n%n", subject, highestGrade, bestStudent);
 
 	}
 
@@ -129,6 +151,54 @@ public class StudentGradeBook {
 		}
 		
 		System.out.println();
+
+	}
+
+	public void printSingleBars() {
+
+		for (int i = 0; i < 50; i++) {
+
+			System.out.print("-");
+
+		}
+		
+		System.out.println();
+
+	}
+
+	public void printBarChart(int subject) {
+
+		System.out.printf("%nSubject %d's Distribution of Results:%n", subject);
+		printSingleBars();
+
+		int[] frequency = new int[11];
+
+		for (int student = 1; student <= students; student++) {
+
+			int percentage = grades[student-1][subject-1] / 10;
+			frequency[percentage]++;
+
+		}
+
+		for (int count = 0; count < frequency.length; count++) {
+
+			if (count == 10) System.out.printf("%5d:", 100);
+
+			else {
+
+				System.out.printf("%02d-%02d:", count * 10, (count * 10) + 9);
+
+			}
+
+			for (int stars = 0; stars < frequency[count]; stars++) {
+
+				System.out.print("* ");
+
+			}
+
+			System.out.println();
+
+		}
 
 	}
 

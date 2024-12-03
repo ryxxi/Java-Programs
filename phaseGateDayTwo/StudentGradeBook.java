@@ -37,14 +37,50 @@ public class StudentGradeBook {
 
 			for (int exam = 1; exam <= exams; exam++) {
 
-				System.out.printf("Enter Student %d's grade in Exam %d%n", student, exam);
-				grades[student - 1][exam - 1] = input.nextInt();
+				String grade = "";
+
+				do{
+			
+					System.out.printf("Enter Student %d's grade in Exam %d%n", student, exam);
+					grade = input.nextLine();
+
+					if (!isGradeInvalid(grade)) System.out.println("Invalid input, try again");
+
+				} while (!isGradeInvalid(grade));
+
+				grades[student - 1][exam - 1] = Integer.parseInt(grade);
 
 			}
 
 		}
 
 		return grades;
+
+	}
+
+	public boolean isGradeInvalid(String string) {
+
+		for (int i = 0; i < string.length(); i++) {
+
+			if(!Character.isDigit(string.charAt(i))) return false;
+
+				if (Integer.parseInt(string) < 0 || Integer.parseInt(string) > 100) return false;
+
+		}
+		return true;
+
+	}
+
+	public boolean isExamInvalid(String string) {
+
+		for (int i = 0; i < string.length(); i++) {
+
+			if(!Character.isDigit(string.charAt(i))) return false;
+
+				if (Integer.parseInt(string) < 0 || Integer.parseInt(string) > (examse)) return false;
+
+		}
+		return true;
 
 	}
 
@@ -69,34 +105,44 @@ public class StudentGradeBook {
 			System.out.print("\033[H\033[2J");
       			System.out.flush();
 
-			System.out.println("Which subjects grades do you wish to see?");
-			int subject = input.nextInt();
+			String userInput = "";
+
+			do{
+			
+				System.out.printf("Which exam's grades do you wish to see? (1 - %d)%n", exams);
+				userInput = input.nextLine();
+
+				if (!isExamInvalid(userInput)) System.out.println("Invalid input, try again");
+
+			} while (!isExamInvalid(userInput));
+
+			int exam = Integer.parseInt(userInput);
 
 			System.out.print("\033[H\033[2J");
       			System.out.flush();
 
-			System.out.printf("%s%nExam %d%n", getCourseName(), subject);
+			System.out.printf("%s%nExam %d%n", getCourseName(), exam);
 
 			printSingleBars();
 
 			for (int student = 1; student <= students; student++) {
 
-				System.out.printf("Student %d: %2d%n", student, grades[student-1][subject-1]);
+				System.out.printf("Student %d: %2d%n", student, grades[student-1][exam-1]);
 
 			}
 			printSingleBars();
 			printSingleBars();
 
-			System.out.printf("TOTAL Grade: %d%n", subject, getTotal(subject));
+			System.out.printf("TOTAL Grade: %d%n", getTotal(exam));
 
-			System.out.printf("MEAN Grade: %.1f%n", subject, getMean(subject));
+			System.out.printf("MEAN Grade: %.1f%n", getMean(exam));
 
-			getHighestScorer(subject);
+			getHighestScorer(exam);
 
 			printDoubleBars();
 			printDoubleBars();
 
-			printBarChart(subject);
+			printBarChart(exam);
 
 	}
 
@@ -131,7 +177,7 @@ public class StudentGradeBook {
 
 			if (grades[student-1][subject-1] > highestGrade) {
 
-				highestGrade = grades[student][subject-1];
+				highestGrade = grades[student-1][subject-1];
 				bestStudent = student + 1;
 
 			}

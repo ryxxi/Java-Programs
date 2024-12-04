@@ -254,7 +254,7 @@ public class StudentGradeBook {
 
 		for (int student = 1; student <= students; student++) {
 
-			System.out.printf("Student %d: %2d%n", student, grades[student-1][exam-1]);
+			System.out.printf("Student %d: %2d  (%d)%n", student, grades[student-1][exam-1], getExamPosition(student, exam));
 
 		}
 		printSpecificSingleBars();
@@ -291,7 +291,6 @@ public class StudentGradeBook {
 
 		System.out.printf("TOTAL: %d%n", getAllTotal());
 		System.out.printf("MEAN: %.1f%n", getAllMean());
-		System.out.printf("POS: %d%n", getOverPosition(
 
 		printAllSingleBars();
 		printAllSingleBars();
@@ -347,9 +346,9 @@ public class StudentGradeBook {
 
 		int total = 0;
 
-		for (int student = 1; student < students; student++) {
+		for (int student = 1; student <= students; student++) {
 
-			for (int exam = 1; exam < exams; exam++) {
+			for (int exam = 1; exam <= exams; exam++) {
 
 				total += grades[student-1][exam-1];
 
@@ -438,9 +437,9 @@ public class StudentGradeBook {
 		int studentScore = grades[student-1][exam-1];
 		int position = 1;
 
-		for (int i = 0; i < students; i++) {
+		for (int i = 1; i <= students; i++) {
 
-			if (i != (student - 1) && grades[i][exam-1] > studentScore) {
+			if (i != (student) && grades[i-1][exam-1] > studentScore) {
 
 				position++;
 
@@ -454,12 +453,12 @@ public class StudentGradeBook {
 
 	public int getOverallPosition(int student) {
 
-		int studentMean = getStudentMean(student);
+		double studentMean = getStudentMean(student);
 		int position = 1;
 
-		for (int i = 0; i < students; i++) {
+		for (int i = 1; i <= students; i++) {
 
-			if (i != (student - 1) && grades[i][exam-1] > studentMean) {
+			if (i != (student) && getStudentMean(i) > studentMean) {
 
 				position++;
 

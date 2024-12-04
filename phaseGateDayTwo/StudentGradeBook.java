@@ -39,14 +39,15 @@ public class StudentGradeBook {
 
 				String grade = "";
 
-				do{
+				while (true) {
 			
 					System.out.printf("Enter Student %d's grade in Exam %d%n", student, exam);
 					grade = input.nextLine();
 
-					if (!isGradeInvalid(grade)) System.out.println("Invalid input, try again");
+					if (isGradeValid(grade)) break;
+					System.out.println("Invalid input, try again");
 
-				} while (!isGradeInvalid(grade));
+				}
 
 				grades[student - 1][exam - 1] = Integer.parseInt(grade);
 
@@ -58,7 +59,7 @@ public class StudentGradeBook {
 
 	}
 
-	public boolean isGradeInvalid(String string) {
+	public boolean isGradeValid(String string) {
 
 		for (int i = 0; i < string.length(); i++) {
 
@@ -71,13 +72,13 @@ public class StudentGradeBook {
 
 	}
 
-	public boolean isExamInvalid(String string) {
+	public boolean isExamValid(String string) {
 
 		for (int i = 0; i < string.length(); i++) {
 
 			if(!Character.isDigit(string.charAt(i))) return false;
 
-				if (Integer.parseInt(string) < 0 || Integer.parseInt(string) > (exams)) return false;
+				if (Integer.parseInt(string) < 1 || Integer.parseInt(string) > (exams)) return false;
 
 		}
 		return true;
@@ -232,14 +233,15 @@ public class StudentGradeBook {
 
 		String userInput = "";
 
-		do{
+		while (true) {
 			
 			System.out.printf("Which exam's grades do you wish to see? (1 - %d)%n", exams);
 			userInput = input.nextLine();
 
-			if (!isExamInvalid(userInput)) System.out.println("Invalid input, try again");
+			if (isExamValid(userInput)) break;
+			System.out.println("Invalid input, try again");
 
-		} while (!isExamInvalid(userInput));
+		}
 
 		int exam = Integer.parseInt(userInput);
 
@@ -281,7 +283,7 @@ public class StudentGradeBook {
 
 		}
 
-		System.out.println("\tMean\tTotal\n");
+		System.out.println("\tTotal\tMean\tPos\n");
 
 		displayAllStudents();
 
@@ -289,6 +291,7 @@ public class StudentGradeBook {
 
 		System.out.printf("TOTAL: %d%n", getAllTotal());
 		System.out.printf("MEAN: %.1f%n", getAllMean());
+		System.out.printf("POS: %d%n", getOverPosition(
 
 		printAllSingleBars();
 		printAllSingleBars();
@@ -311,6 +314,7 @@ public class StudentGradeBook {
 
 		System.out.printf("\t%d", getStudentTotal(student));
 		System.out.printf("\t%.1f", getStudentMean(student));
+		System.out.printf("\t%d", getOverallPosition(student));
 		System.out.println("\n");
 
 		}
@@ -426,6 +430,44 @@ public class StudentGradeBook {
 		}
 		
 		System.out.println();
+
+	}
+
+	public int getExamPosition(int student, int exam) {
+
+		int studentScore = grades[student-1][exam-1];
+		int position = 1;
+
+		for (int i = 0; i < students; i++) {
+
+			if (i != (student - 1) && grades[i][exam-1] > studentScore) {
+
+				position++;
+
+			}
+
+		}
+
+		return position;
+
+	}
+
+	public int getOverallPosition(int student) {
+
+		int studentMean = getStudentMean(student);
+		int position = 1;
+
+		for (int i = 0; i < students; i++) {
+
+			if (i != (student - 1) && grades[i][exam-1] > studentMean) {
+
+				position++;
+
+			}
+
+		}
+
+		return position;
 
 	}		
 

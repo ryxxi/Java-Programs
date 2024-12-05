@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.util.Date;
 import java.util.ArrayList;
-import java.security.SecureRandom;
 
 public class Checkout {
 
@@ -11,7 +10,6 @@ public class Checkout {
 	private ArrayList<String> items = new ArrayList<>();
 	private ArrayList<Double> priceOfItems = new ArrayList<>();
 	private ArrayList<Integer> quantityOfItems = new ArrayList<>();
-	private SecureRandom random = new SecureRandom();
 	private double VAT = 0.175;
 
 	public Checkout(String customerName) {
@@ -31,8 +29,6 @@ public class Checkout {
 		items.add(getItem());
 
 		priceOfItems.add(getItemCost());
-
-		itemCount++;
 
 		checkForMoreItems();	
 
@@ -104,6 +100,9 @@ public class Checkout {
 
 	public void getStoreInfo() {
 
+		System.out.print("\033[H\033[2J");
+      		System.out.flush();
+
 		System.out.print(
 			"SEMICOLON STORES\n" +
 			"MAIN BRANCH\n" +
@@ -169,7 +168,7 @@ public class Checkout {
 
 		double discount = 0;
 
-		discount = random.nextDouble() * (0.35 * subtotal);
+		discount = (0.125 * subtotal);
 
 		return (int) discount;
 

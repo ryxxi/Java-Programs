@@ -61,27 +61,55 @@ public class StudentGradeBook {
 
 	public boolean isGradeValid(String string) {
 
-		for (int i = 0; i < string.length(); i++) {
+		int temp = 0;
 
-			if(!Character.isDigit(string.charAt(i))) return false;
+		try {
 
-				if (Integer.parseInt(string) < 0 || Integer.parseInt(string) > 100) return false;
+			temp = Integer.parseInt(string);
 
 		}
-		return true;
+
+		catch (NumberFormatException e) {
+
+			System.out.print("\033[H\033[2J");
+      			System.out.flush();
+			System.out.println("Invalid input, try again");
+			return false;
+
+		}
+
+		if (temp >= 0 && temp <= 100){
+			return true;
+		}
+
+		return false;
 
 	}
 
 	public boolean isExamValid(String string) {
 
-		for (int i = 0; i < string.length(); i++) {
+		int temp = 0;
 
-			if(!Character.isDigit(string.charAt(i))) return false;
+		try {
 
-				if (Integer.parseInt(string) < 1 || Integer.parseInt(string) > (exams)) return false;
+			temp = Integer.parseInt(string);
 
 		}
-		return true;
+
+		catch (NumberFormatException e) {
+
+			System.out.print("\033[H\033[2J");
+      			System.out.flush();
+			System.out.println("Invalid input, try again");
+			return false;
+
+		}
+
+		if (temp >= 1 && temp <= exams){
+			return true;
+		}
+
+		return false;
 
 	}
 
@@ -250,7 +278,7 @@ public class StudentGradeBook {
 
 		System.out.printf("%s%nExam %d%n", getCourseName(), exam);
 
-		printSpecificSingleBars();
+		printSpecificDoubleBars();
 
 		for (int student = 1; student <= students; student++) {
 
@@ -275,6 +303,12 @@ public class StudentGradeBook {
 
 	public void displayAllExams() {
 
+		System.out.print("\033[H\033[2J");
+      		System.out.flush();
+
+		System.out.printf("Gradebook for %s%n", getCourseName());
+		printAllDoubleBars();
+		
 		System.out.print("Student");
 
 		for (int exam = 1; exam <= exams; exam++) {

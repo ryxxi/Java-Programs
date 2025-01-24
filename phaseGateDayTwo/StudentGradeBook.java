@@ -187,7 +187,7 @@ public class StudentGradeBook {
 			if (grades[student-1][subject-1] > highestGrade) {
 
 				highestGrade = grades[student-1][subject-1];
-				bestStudent = student + 1;
+				bestStudent = student;
 
 			}
 

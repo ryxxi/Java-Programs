@@ -2,8 +2,8 @@ package turtleGraphics;
 
 public class Position {
 
-    int row = 0;
-    int column = 0;
+    int row;
+    int column;
 
     Position(int row, int column) {
         this.row = row;
@@ -20,8 +20,7 @@ public class Position {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Position) {
-            Position p = (Position) obj;
+        if (obj instanceof Position p) {
             return p.row == row && p.column == column;
         }
         return false;

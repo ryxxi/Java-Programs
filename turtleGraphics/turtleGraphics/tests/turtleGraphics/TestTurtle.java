@@ -89,4 +89,39 @@ public class TestTurtle {
         turtle.turnLeft();
         assertEquals(Direction.EAST, turtle.getDirection());
     }
+
+    @Test
+    public void testInitialPositionIs_00() {
+        assertEquals(new Position(), turtle.getPosition());
+    }
+
+    @Test
+    public void testTurtleCanMove() {
+        turtle.moveForward(5);
+
+        assertNotEquals(new Position(), turtle.getPosition());
+    }
+
+    @Test
+    public void testTurtleCannotMoveOutOfBounds() {
+        turtle.moveForward(30);
+
+        assertEquals(new Position(), turtle.getPosition());
+    }
+
+    @Test
+    public void testTurtleCanDraw() {
+        turtle.lowerPen();
+        assertTrue(turtle.isPenDown());
+
+        turtle.moveForward(5);
+        var testArray = new boolean[20][20];
+        for (int i = 0; i < 5; i++) {
+            testArray[0][i] = true;
+        }
+        assertArrayEquals(turtle.getSketchbook().getTiles(), testArray);
+    }
+
+
+
 }
